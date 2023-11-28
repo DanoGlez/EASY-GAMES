@@ -12,6 +12,7 @@ function initializeGame() {
   document.getElementById('warning').innerHTML = '';
   document.getElementById('result').innerHTML = '';
   document.getElementById('history').innerHTML = '';
+  document.getElementById('range').innerHTML = '';
   attempts = [];
   isGameOver = false;
   maxAttempts = parseInt(document.getElementById('attempts-selector').value);
@@ -48,6 +49,7 @@ function checkGuess() {
     document.getElementById('error').style.display = 'none';
     document.getElementById('crown').style.display = 'none';
     document.getElementById('attempts').innerHTML = `Intentos restantes: ${maxAttempts - attempts.length}`;
+    document.getElementById('range').innerHTML = `Rango: ${Math.min(...attempts)} - ${Math.max(...attempts)}`;
   }
 
   if (maxAttempts - attempts.length === 1 && !isGameOver) {

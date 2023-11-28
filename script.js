@@ -17,6 +17,7 @@ function initializeGame() {
   isGameOver = false;
   maxAttempts = parseInt(document.getElementById('attempts-selector').value);
   randomNumber = Math.floor(Math.random() * 100) + 1;
+  updateRange();
 }
 
 function checkGuess() {
@@ -42,6 +43,7 @@ function checkGuess() {
     document.getElementById('crown').style.display = 'block';
     document.getElementById('error').style.display = 'none';
     isGameOver = true;
+    updateRange();
   } else {
     const message = userGuess < randomNumber ? "Demasiado bajo." : "Demasiado alto.";
     document.getElementById('result').innerHTML = `Intenta de nuevo. ${message}`;
@@ -49,7 +51,7 @@ function checkGuess() {
     document.getElementById('error').style.display = 'none';
     document.getElementById('crown').style.display = 'none';
     document.getElementById('attempts').innerHTML = `Intentos restantes: ${maxAttempts - attempts.length}`;
-    document.getElementById('range').innerHTML = `Rango: ${Math.min(...attempts)} - ${Math.max(...attempts)}`;
+    updateRange();
   }
 
   if (maxAttempts - attempts.length === 1 && !isGameOver) {
@@ -62,6 +64,7 @@ function checkGuess() {
     document.getElementById('error').style.display = 'block';
     document.getElementById('crown').style.display = 'none';
     isGameOver = true;
+    updateRange();
   }
 
   // Deshabilitar el campo de entrada después de adivinar
@@ -74,6 +77,18 @@ function checkGuess() {
 function resetGame() {
   initializeGame();
   document.getElementById('guess').value = '';
+}
+
+function updateAttempts() {
+  maxAttempts = parseInt(document.getElementById('attempts-selector').value);
+  document.getElementById('attempts').innerHTML = `Intentos restantes: ${maxAttempts - attempts.length}`;
+}
+
+function updateRange() {
+  const targetNumber = randomNumber; // El número que se debe adivinar
+  const closestBelow = Math.max(...attempts.filter(num => num < targetNumber), 0);
+  const closestAbove = Math.min(...attempts.filter(num => num > targetNumber), 100);
+  document.getElementById('range').innerHTML = `Rango: ${closestBelow} - ${closestAbove}`;
 }
 
 // Inicializar el juego al cargar la página

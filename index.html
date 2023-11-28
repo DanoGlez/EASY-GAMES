@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adivina el número</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+  <h1>Adivina el número</h1>
+  <p>Estoy pensando en un número entre 1 y 100. ¿Puedes adivinar cuál es?</p>
+
+  <label for="attempts-selector" id="attempts-label">Número de intentos:</label>
+  <select id="attempts-selector">
+    <option value="1">1</option>
+    <option value="5" selected>5</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="50">50</option>
+  </select>
+
+  <br>
+
+  <label for="guess">Tu elección:</label>
+  <input type="number" id="guess" min="1" max="100" onkeydown="if(event.keyCode==13) checkGuess()">
+  <button onclick="checkGuess()">
+    <span class="arrow-up">&#8593;</span>
+    <span class="arrow-down">&#8595;</span>
+    Verificar
+  </button>
+
+  <p id="result"></p>
+  <p id="history"></p>
+  <p id="attempts"></p>
+  <p id="warning"></p>
+
+  <div id="error"></div>
+  <div id="crown"></div>
+
+  <button onclick="resetGame()">Reiniciar Juego</button>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

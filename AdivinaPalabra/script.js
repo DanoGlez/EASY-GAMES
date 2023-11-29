@@ -121,6 +121,9 @@ function endGame(hasWon) {
     }, 500);
   }
 
+  // reset game after 4 seconds
+  setTimeout(() => resetGame(), 4000);
+
   gameFinished = true;
   const letterButtons = document.querySelectorAll('button[id^="btn-"]');
   letterButtons.forEach(button => {

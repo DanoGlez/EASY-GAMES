@@ -1,7 +1,7 @@
 let randomNumber;
 let attempts = [];
 let isGameOver = false;
-let maxAttempts = 5;
+let maxAttempts = 0;
 
 function initializeGame() {
   document.getElementById('guess').disabled = false;
@@ -22,6 +22,8 @@ function initializeGame() {
 
 function checkGuess() {
   if (isGameOver) return;
+
+  if (attempts.length == 0) maxAttempts = parseInt(document.getElementById('attempts-selector').value);
 
   const userGuess = parseInt(document.getElementById('guess').value);
 

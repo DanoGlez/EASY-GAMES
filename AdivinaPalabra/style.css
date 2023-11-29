@@ -22,7 +22,8 @@ button {
   color: #fff;
   border: none;
   border-radius: 5px;
-  margin-top: 10px;
+  margin: 5px;
+  transition: background-color 0.3s ease; /* Agregamos una transición suave */
 }
 
 button[disabled] {
@@ -39,14 +40,20 @@ button:hover {
   color: #333;
 }
 
-#letter-table {
-  margin: 20px auto; /* Centrar la tabla */
-  border-collapse: collapse; /* Fusionar bordes de las celdas */
-  width: 80%; /* Ancho del 80% de la ventana */
+#content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-#letter-table td {
-  padding: 5px;
+#container {
+  display: flex;
+  justify-content: center;
+}
+
+#letter-table {
+  margin-top: 20px;
 }
 
 #result,
@@ -54,9 +61,4 @@ button:hover {
   font-size: 18px;
   margin-top: 10px;
   color: #333;
-}
-
-#result.finished {
-  font-weight: bold;
-  color: #27ae60;
 }

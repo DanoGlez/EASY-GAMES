@@ -7,7 +7,7 @@ let maxAttempts = 15;
 let gameFinished = false;
 
 async function initializeGame() {
-  await loadWordList('https://raw.githubusercontent.com/webpwnized/byepass/master/dictionaries/top-10000-spanish-words.txt');
+  await loadWordList('https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/0_palabras_todas_no_conjugaciones.txt');
   randomWord = getRandomWord();
   guessedWord = Array(randomWord.length).fill('_');
   displayWord();
@@ -27,7 +27,7 @@ function loadWordList(url) {
       wordList = data.split('\n').filter(word => {
         return word.split('').every(letter => {
           return 'abcdefghijklmnñopqrstuvwxyz'.includes(letter);
-        });
+        }) && word.length > 3;
       });
     }).catch(err => {
       console.error(err);

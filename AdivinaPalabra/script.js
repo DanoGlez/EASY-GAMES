@@ -74,7 +74,7 @@ document.addEventListener('keypress', function (event) {
 });
 
 function checkGuess(guess) {
-  if (gameFinished) return;
+  if (gameFinished || guessedWord.includes(guess)) return;
 
   const button = document.getElementById(`btn-${guess}`);
   button.disabled = true;

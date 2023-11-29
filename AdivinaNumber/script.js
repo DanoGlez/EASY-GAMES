@@ -2,6 +2,7 @@ let randomNumber;
 let attempts = [];
 let isGameOver = false;
 let maxAttempts = 0;
+let rankings = []; // Array para almacenar los rankings
 
 function initializeGame() {
   document.getElementById('guess').disabled = false;
@@ -13,6 +14,7 @@ function initializeGame() {
   document.getElementById('result').innerHTML = '';
   document.getElementById('history').innerHTML = '';
   document.getElementById('range').innerHTML = '';
+  document.getElementById('ranking').innerHTML = ''; // Limpiar el ranking al reiniciar
   attempts = [];
   isGameOver = false;
   maxAttempts = parseInt(document.getElementById('attempts-selector').value);
@@ -20,10 +22,20 @@ function initializeGame() {
   updateRange();
 }
 
+function showRanking() {
+  const sortedRankings = rankings.sort((a, b) => a.attempts - b.attempts);
+  let rankingHTML = '<h2>Ranking:</h2><ol>';
+  for (let i = 0; i < sortedRankings.length; i++) {
+    rankingHTML += `<li>${sortedRankings[i].name}: ${sortedRankings[i].attempts} intentos</li>`;
+  }
+  rankingHTML += '</ol>';
+  document.getElementById('ranking').innerHTML = rankingHTML;
+}
+
 function checkGuess() {
   if (isGameOver) return;
 
-  if (attempts.length == 0) maxAttempts = parseInt(document.getElementById('attempts-selector').value);
+  if (attempts.length === 0) maxAttempts = parseInt(document.getElementById('attempts-selector').value);
 
   const userGuess = parseInt(document.getElementById('guess').value);
 
@@ -46,6 +58,13 @@ function checkGuess() {
     document.getElementById('error').style.display = 'none';
     isGameOver = true;
     updateRange();
+
+    // Añadir el nombre del jugador para el ranking
+    const playerName = prompt("¡Felicidades! ¡Adivinaste el número! Ingresa tu nombre para el ranking:");
+    rankings.push({ name: playerName, attempts: attempts.length });
+
+    // Mostrar el ranking
+    showRanking();
   } else {
     const message = userGuess < randomNumber ? "Demasiado bajo." : "Demasiado alto.";
     document.getElementById('result').innerHTML = `Intenta de nuevo. ${message}`;

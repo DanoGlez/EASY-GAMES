@@ -10,9 +10,6 @@
 
 <body>
 
-  <h1>Adivina el número</h1>
-  <p>Estoy pensando en un número entre 1 y 100. ¿Puedes adivinar cuál es?</p>
-
   <label for="attempts-selector" id="attempts-label">Número de intentos:</label>
   <select id="attempts-selector">
     <option value="1">1</option>
@@ -21,8 +18,10 @@
     <option value="20">20</option>
     <option value="50">50</option>
   </select>
-
   <br>
+
+  <h1>Adivina el número</h1>
+  <p>Estoy pensando en un número entre 1 y 100. ¿Puedes adivinar cuál es?</p>
 
   <label for="guess">Tu elección:</label>
   <input type="number" id="guess" min="1" max="100" onkeydown="if(event.keyCode==13) checkGuess()">
@@ -41,6 +40,7 @@
   <div id="crown"></div>
 
   <p id="range"></p>
+  <div id="ranking"></div>
 
   <button onclick="resetGame()">Reiniciar Juego</button>
 
@@ -48,4 +48,4 @@
 
 </body>
 
-</html>
+</html> 

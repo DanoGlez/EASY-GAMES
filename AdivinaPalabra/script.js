@@ -65,6 +65,14 @@ function setupLetterButtons() {
   }
 }
 
+// listen to keypress event
+document.addEventListener('keypress', function (event) {
+  const letter = event.key.toLowerCase();
+  if ('abcdefghijklmnñopqrstuvwxyz'.includes(letter)) {
+    checkGuess(letter);
+  }
+});
+
 function checkGuess(guess) {
   if (gameFinished) return;
 
@@ -87,10 +95,10 @@ function checkGuess(guess) {
 
   if (guessedWord.join('') === randomWord) {
     document.getElementById('result').innerHTML = '¡Felicidades! ¡Adivinaste la palabra!';
-    endGame();
+    endGame(true);
   } else if (failedAttempts === maxAttempts) {
     document.getElementById('result').innerHTML = `¡Agotaste tus intentos! La palabra era "${randomWord}". ¡Mejor suerte la próxima vez!`;
-    endGame();
+    endGame(false);
   }
 }
 
@@ -98,7 +106,21 @@ function updateAttempts() {
   document.getElementById('attempts').innerHTML = `Fallos restantes: ${maxAttempts - failedAttempts}`;
 }
 
-function endGame() {
+function endGame(hasWon) {
+  // cambiar fondo body dependiendo si gano o perdio el juego (alternar entre verde o rojo y fondo original)
+  const bgColor = hasWon ? "#2ecc71" : "#e74c3c";
+  const originalColor = "#f0f0f0";
+  toggleColor();
+  setTimeout(toggleColor, 1000);
+  setTimeout(toggleColor, 2000);
+
+  function toggleColor() {
+    document.body.style.backgroundColor = bgColor;
+    setTimeout(() => {
+      document.body.style.backgroundColor = originalColor;
+    }, 500);
+  }
+
   gameFinished = true;
   const letterButtons = document.querySelectorAll('button[id^="btn-"]');
   letterButtons.forEach(button => {

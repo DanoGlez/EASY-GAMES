@@ -1,6 +1,7 @@
 var wordList = ["none"];
 let randomWord;
 let guessedWord;
+let lettersUsed = [];
 let failedAttempts = 0;
 let maxAttempts = 15;
 let gameFinished = false;
@@ -74,7 +75,8 @@ document.addEventListener('keypress', function (event) {
 });
 
 function checkGuess(guess) {
-  if (gameFinished || guessedWord.includes(guess)) return;
+  if (gameFinished || lettersUsed.includes(guess)) return;
+  lettersUsed.push(guess);
 
   const button = document.getElementById(`btn-${guess}`);
   button.disabled = true;

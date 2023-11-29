@@ -12,6 +12,7 @@ async function initializeGame() {
   guessedWord = Array(randomWord.length).fill('_');
   displayWord();
   failedAttempts = 0;
+  lettersUsed = [];
   updateAttempts();
   document.getElementById('result').innerHTML = '';
   setupLetterButtons();

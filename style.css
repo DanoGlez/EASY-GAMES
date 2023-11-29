@@ -1,0 +1,41 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  margin: 50px;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+h1 {
+  color: #3498db;
+}
+
+.game {
+  border: 1px solid #3498db;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+}
+
+h2 {
+  color: #3498db;
+}
+
+p {
+  color: #555;
+}
+
+a {
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+a:hover {
+  background-color: #2980b9;
+}

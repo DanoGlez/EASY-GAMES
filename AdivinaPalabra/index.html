@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adivina la Palabra</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+  <h1>Adivina la Palabra</h1>
+  <p>Estoy pensando en una palabra. Intenta adivinarla letra por letra.</p>
+
+  <p id="word-display"></p>
+
+  <table id="letter-table">
+    <tr>
+      <td><button onclick="checkGuess('a')" id="btn-a">A</button></td>
+      <td><button onclick="checkGuess('b')" id="btn-b">B</button></td>
+      <td><button onclick="checkGuess('c')" id="btn-c">C</button></td>
+      <td><button onclick="checkGuess('d')" id="btn-d">D</button></td>
+      <td><button onclick="checkGuess('e')" id="btn-e">E</button></td>
+      <td><button onclick="checkGuess('f')" id="btn-f">F</button></td>
+    </tr>
+    <tr>
+      <td><button onclick="checkGuess('g')" id="btn-g">G</button></td>
+      <td><button onclick="checkGuess('h')" id="btn-h">H</button></td>
+      <td><button onclick="checkGuess('i')" id="btn-i">I</button></td>
+      <td><button onclick="checkGuess('j')" id="btn-j">J</button></td>
+      <td><button onclick="checkGuess('k')" id="btn-k">K</button></td>
+      <td><button onclick="checkGuess('l')" id="btn-l">L</button></td>
+    </tr>
+    <tr>
+      <td><button onclick="checkGuess('m')" id="btn-m">M</button></td>
+      <td><button onclick="checkGuess('n')" id="btn-n">N</button></td>
+      <td><button onclick="checkGuess('ñ')" id="btn-ñ">Ñ</button></td>
+      <td><button onclick="checkGuess('o')" id="btn-o">O</button></td>
+      <td><button onclick="checkGuess('p')" id="btn-p">P</button></td>
+      <td><button onclick="checkGuess('q')" id="btn-q">Q</button></td>
+    </tr>
+    <tr>
+      <td><button onclick="checkGuess('r')" id="btn-r">R</button></td>
+      <td><button onclick="checkGuess('s')" id="btn-s">S</button></td>
+      <td><button onclick="checkGuess('t')" id="btn-t">T</button></td>
+      <td><button onclick="checkGuess('u')" id="btn-u">U</button></td>
+      <td><button onclick="checkGuess('v')" id="btn-v">V</button></td>
+      <td><button onclick="checkGuess('w')" id="btn-w">W</button></td>
+    </tr>
+    <tr>
+      <td><button onclick="checkGuess('x')" id="btn-x">X</button></td>
+      <td><button onclick="checkGuess('y')" id="btn-y">Y</button></td>
+      <td><button onclick="checkGuess('z')" id="btn-z">Z</button></td>
+    </tr>
+  </table>
+
+  <p id="result"></p>
+  <p id="attempts"></p>
+
+  <button onclick="resetGame()">Reiniciar Juego</button>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

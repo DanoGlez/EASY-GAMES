@@ -110,7 +110,17 @@ function endGame(hasWon) {
   toggleColor();
   setTimeout(toggleColor, 1000);
   setTimeout(toggleColor, 2000);
-
+  /* COLORES DE FONDO
+  if (bgColor === "#2ecc71") {
+  setTimeout(toggleColor, 3000);
+  setTimeout(toggleColor, 4000);
+  }else{ 
+    setTimeout(toggleColor, 5000);
+    setTimeout(toggleColor, 6000);
+    setTimeout(toggleColor, 9000);
+    setTimeout(toggleColor, 10000);
+  }
+*/
   function toggleColor() {
     document.body.style.backgroundColor = bgColor;
     setTimeout(() => {

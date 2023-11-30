@@ -5,6 +5,7 @@ let lettersUsed = [];
 let failedAttempts = 0;
 let maxAttempts = 15;
 let gameFinished = false;
+let definition = "";  // Variable para almacenar la definición
 
 async function initializeGame() {
   await loadWordList('https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/0_palabras_todas_no_conjugaciones.txt');
@@ -15,12 +16,13 @@ async function initializeGame() {
   lettersUsed = [];
   updateAttempts();
   document.getElementById('result').innerHTML = '';
+  // Nuevo elemento para mostrar la definición
+  document.getElementById('definition').innerHTML = '';
   setupLetterButtons();
   gameFinished = false;
 }
 
 function loadWordList(url) {
-  // fetch url (txt) and each line will be a word, skip the word is have some letter isn't on the abecedary
   return fetch(url)
     .then(response => response.text())
     .then(data => {
@@ -45,7 +47,7 @@ function displayWord() {
 
 function setupLetterButtons() {
   const letterTable = document.getElementById('letter-table');
-  letterTable.innerHTML = ''; // Limpiar la tabla
+  letterTable.innerHTML = '';
 
   const alphabet = 'abcdefghijklmnñopqrstuvwxyz';
 
@@ -61,7 +63,6 @@ function setupLetterButtons() {
   }
 }
 
-// listen to keypress event
 document.addEventListener('keypress', function (event) {
   const letter = event.key.toLowerCase();
   if ('abcdefghijklmnñopqrstuvwxyz'.includes(letter)) {
@@ -94,7 +95,7 @@ function checkGuess(guess) {
     document.getElementById('result').innerHTML = '¡Felicidades! ¡Adivinaste la palabra!';
     endGame(true);
   } else if (failedAttempts === maxAttempts) {
-    document.getElementById('result').innerHTML = `¡Agotaste tus intentos! La palabra era "${randomWord}". ¡Mejor suerte la próxima vez!`;
+    document.getElementById('result').innerHTML = `Agotaste tus intentos. ¡Mejor suerte la próxima vez!`;
     endGame(false);
   }
 }
@@ -104,7 +105,6 @@ function updateAttempts() {
 }
 
 function endGame(hasWon) {
-  // cambiar fondo body dependiendo si gano o perdio el juego (alternar entre verde o rojo y fondo original)
   const bgColor = hasWon ? "#2ecc71" : "#e74c3c";
   const originalColor = "#f0f0f0";
   toggleColor();
@@ -117,18 +117,38 @@ function endGame(hasWon) {
       document.body.style.backgroundColor = originalColor;
     }, 500);
   }
+  
+  // actualiza la palabra
+  guessedWord = randomWord.split('');
+  displayWord();
+  
+  // Si el jugador ha ganado, obtén y muestra la definición de la palabra
+  getWordDefinition(randomWord);
 
-  // reset game after 4 seconds
+  // Reinicia el juego después de 30 segundos
   setTimeout(() => {
     resetGame();
     console.log('Juego reiniciado');
-  }, 4000);
+  }, 20000);
 
   gameFinished = true;
   const letterButtons = document.querySelectorAll('button[id^="btn-"]');
   letterButtons.forEach(button => {
     button.disabled = true;
   });
+}
+
+function getWordDefinition(word) {
+  fetch(`https://rae-api.alekitopi.es/word/${word}`)
+    .then(response => response.text())
+    .then(data => {
+      definition = data || "Definición no disponible";
+      document.getElementById('definition').innerHTML = `Definición: ${definition}`;
+    })
+    .catch(error => {
+      console.error('Error al obtener la definición:', error);
+      document.getElementById('definition').innerHTML = "Error al obtener la definición.";
+    });
 }
 
 function resetGame() {

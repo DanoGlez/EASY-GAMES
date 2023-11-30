@@ -48,22 +48,16 @@ function setupLetterButtons() {
   letterTable.innerHTML = ''; // Limpiar la tabla
 
   const alphabet = 'abcdefghijklmnñopqrstuvwxyz';
-  let index = 0;
 
-  for (let i = 0; i < 3; i++) {
-    const row = letterTable.insertRow(i);
-    for (let j = 0; j < 9; j++) {
-      const cell = row.insertCell(j);
-      const letter = alphabet[index];
-      const button = document.createElement('button');
-      button.textContent = letter.toUpperCase();
-      button.onclick = function () {
-        checkGuess(letter);
-      };
-      button.id = `btn-${letter}`;
-      cell.appendChild(button);
-      index++;
-    }
+  for (let i = 0; i < alphabet.length; i++) {
+    const letter = alphabet[i];
+    const button = document.createElement('button');
+    button.textContent = letter.toUpperCase();
+    button.onclick = function () {
+      checkGuess(letter);
+    };
+    button.id = `btn-${letter}`;
+    letterTable.appendChild(button);
   }
 }
 

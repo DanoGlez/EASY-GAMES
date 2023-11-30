@@ -5,7 +5,8 @@ body {
   background-color: #f0f0f0;
   color: #333;
 
-  transition: background-color 0.3s ease; /* Agregamos una transición suave */
+  transition: background-color 0.3s ease;
+  /* Agregamos una transición suave */
 }
 
 h1 {
@@ -25,7 +26,8 @@ button {
   border: 3px solid #f0f0f0;
   border-radius: 10px;
   margin: 5px;
-  transition: background-color 0.3s ease; /* Agregamos una transición suave */
+  transition: background-color 0.3s ease;
+  /* Agregamos una transición suave */
 }
 
 button[disabled] {
@@ -47,6 +49,8 @@ button:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  width: 90vw;
 }
 
 #container {
@@ -63,4 +67,10 @@ button:hover {
   font-size: 18px;
   margin-top: 10px;
   color: #333;
+}
+
+@media (min-width: 768px) {
+  #content {
+    width: 50vw;
+  }
 }

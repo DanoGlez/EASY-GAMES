@@ -8,7 +8,7 @@ Este proyecto consiste en un juego interactivo desarrollado en HTML, CSS y JavaS
 4. El programa te indicará si el número correcto es mayor o menor al que has elegido.
 5. Continúa ingresando números hasta adivinar el número correcto o hasta que se agoten los intentos.
 
-## Funcionalidades Adivina el Número
+## Funcionalidades
 - Asistentes de Chat: Utiliza prompts para interactuar con el juego proporcionados por DanoGlez y alekitopi.
 - Lógica del Juego: Genera un número aleatorio y guía al usuario para adivinarlo.
 - Intentos Limitados: El usuario elige la cantidad máxima de intentos para adivinar el número generado.

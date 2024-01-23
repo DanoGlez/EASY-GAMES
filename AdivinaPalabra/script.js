@@ -139,7 +139,7 @@ function endGame(hasWon) {
   setTimeout(() => {
     resetGame();
     console.log('Juego reiniciado');
-  }, 20000);
+  }, 10000);
 
   gameFinished = true;
   const letterButtons = document.querySelectorAll('button[id^="btn-"]');

@@ -14,14 +14,14 @@ function initializeGame() {
   document.getElementById('result').innerHTML = '';
   document.getElementById('history').innerHTML = '';
   document.getElementById('range').innerHTML = '';
-  document.getElementById('ranking').innerHTML = ''; // Limpiar el ranking al reiniciar
+  //document.getElementById('ranking').innerHTML = ''; // Limpiar el ranking al reiniciar
   attempts = [];
   isGameOver = false;
   maxAttempts = parseInt(document.getElementById('attempts-selector').value);
   randomNumber = Math.floor(Math.random() * 100) + 1;
   updateRange();
 }
-
+/*
 function showRanking() {
   const sortedRankings = rankings.sort((a, b) => a.attempts - b.attempts);
   let rankingHTML = '<h2>Ranking:</h2><ol>';
@@ -31,7 +31,7 @@ function showRanking() {
   rankingHTML += '</ol>';
   document.getElementById('ranking').innerHTML = rankingHTML;
 }
-
+*/
 function checkGuess() {
   if (isGameOver) return;
 
@@ -60,11 +60,13 @@ function checkGuess() {
     updateRange();
 
     // Añadir el nombre del jugador para el ranking
+    /*
     const playerName = prompt("¡Felicidades! ¡Adivinaste el número! Ingresa tu nombre para el ranking:");
     rankings.push({ name: playerName, attempts: attempts.length });
+    */
 
     // Mostrar el ranking
-    showRanking();
+    // showRanking();
   } else {
     const message = userGuess < randomNumber ? "Demasiado bajo." : "Demasiado alto.";
     document.getElementById('result').innerHTML = `Intenta de nuevo. ${message}`;
